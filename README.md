@@ -17,6 +17,30 @@ This repository contains:
 - A reference implementation of the Modified Quick Intersection Count Change Image for partial object retrieval purposes.
 - A script which can be used to completely reproduce all results presented in the paper.
 
+## Errata
+
+The paper as published contains one oversight, which we would like to correct here. We would like to thank Gustavo Ortiz for making us aware of it.
+
+The following code in Listing 1:
+
+    for bitIndex in bitOrder:
+        for descriptor in similarDescriptors:
+            if descriptor[bitIndex] == 1:
+                similarDescriptors.remove(descriptor)
+                dissimilarDescriptors.insert(descriptor)
+
+Should be replaced with:
+
+    for bitIndex in bitOrder:
+        if len(dissimilarDescriptors) >= len(similarDescriptors):
+	    return
+        for descriptor in similarDescriptors:
+            if descriptor[bitIndex] == 1:
+                similarDescriptors.remove(descriptor)
+                dissimilarDescriptors.insert(descriptor)
+
+
+
 ## Instructions
 
 You only need to have python 3 installed, which comes with Ubuntu. Any dependencies needed by the project itself can be installed using the menu system in the script itself.
