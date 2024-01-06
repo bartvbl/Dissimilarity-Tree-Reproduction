@@ -33,7 +33,7 @@ Should be replaced with:
 
     for bitIndex in bitOrder:
         if len(dissimilarDescriptors) >= len(similarDescriptors):
-            return
+            break
         for descriptor in similarDescriptors:
             if descriptor[bitIndex] == 1:
                 similarDescriptors.remove(descriptor)
